@@ -16,6 +16,8 @@ from django.dispatch import receiver
 
 from cloudinary.models import CloudinaryField
 
+from .bank_name import BANK_NAME
+
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     """
@@ -277,6 +279,8 @@ class Account(models.Model):
 
     
 
+    
+
     ssn = models.CharField(max_length=500, blank=True, null=True)
 
     receipt = CloudinaryField(resource_type='raw', blank=True, null=True)
@@ -293,7 +297,8 @@ class Account(models.Model):
     balance = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    bank_name = models.CharField(max_length=200, blank=True, null=True, default="Cyprus Bank")
+    # Always change this bank name for every bank app
+    bank_name = models.CharField(max_length=200, blank=True, null=True, default=f"{BANK_NAME} Bank")
     location = models.CharField(max_length=500, blank=True, null=True, default=change_account_location)
     ach_routing = models.CharField(max_length=9, blank=True, null=True, default=generate_ach_routing)
 

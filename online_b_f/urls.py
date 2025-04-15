@@ -11,9 +11,11 @@ import os
 from django.views.generic import TemplateView
 
 
-admin.site.site_header = "JPCiti Bank Administration"
-admin.site.site_title = "JPCiti Bank Admin Portal"
-admin.site.index_title = "Welcome to JPCiti Bank Admin Portal"
+from app.bank_name import BANK_NAME
+
+admin.site.site_header = f"{BANK_NAME} Bank Administration"
+admin.site.site_title = f"{BANK_NAME} Bank Admin Portal"
+admin.site.index_title = f"Welcome to {BANK_NAME} Bank Admin Portal"
 
 
 def serve_google_verification(request):
