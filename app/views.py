@@ -41,11 +41,9 @@ from django.http import Http404
 from .forms import TransferForm
 
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import logout
 from django.contrib import messages
 
-from .forms import SignupForm
-from functools import reduce
 
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str

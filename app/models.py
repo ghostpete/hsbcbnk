@@ -24,25 +24,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     Custom User model for the bank app where email is the unique identifier for authentication.
     """
 
-    EMPLOYMENT_STATUS = [
-        ("Employed", "Employed"),
-        ("Self-employed", "Self-employed"),
-        ("Unemployed", "Unemployed"),
-        ("Retired", "Retired"),
-    ]
-    EMPLOYMENT_TYPE = [
-        ("Full-time", "Full-time"),
-        ("Part-time", "Part-time"),
-        ("Contract", "Contract"),
-        ("Temporary", "Temporary"),
-    ]
-    PREFERRED_ACCOUNT_TYPE = [
-        ('CHECKING', 'Checking'),
-        ('SAVINGS', 'SAVINGS'),
-        ('MONEY MARKET', 'MONEY MARKET'),
-        ('CD', 'Certificate of Deposit (CD)'),
-    ]
-
     PREFERRED_CURRENCY_TYPE = [
         ('$', '$'),
         ('₦', '₦'),
@@ -84,8 +65,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=50, blank=False)   # Required
     phone_number = models.CharField(max_length=15, null=False, blank=True)  # Required
     
-    ssn = models.CharField(max_length=500, blank=True, null=True)  
-    tax_identity_number = models.CharField(max_length=500, blank=True, null=True)
+    
     
     date_of_birth = models.DateField(blank=True, null=True)
 
@@ -96,21 +76,12 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     
     preferred_currency = models.CharField(max_length=100, choices=PREFERRED_CURRENCY_TYPE, default="$", blank=True, null=True)
     
-    preferred_account_type = models.CharField(max_length=100, choices=PREFERRED_ACCOUNT_TYPE, blank=True, null=True)
+    # preferred_account_type = models.CharField(max_length=100, choices=PREFERRED_ACCOUNT_TYPE, blank=True, null=True)
     profile_image = CloudinaryField(resource_type='raw', blank=True, null=True)
 
 
-    # Employment Details
-    employment_status = models.CharField(max_length=100, choices=EMPLOYMENT_STATUS, blank=True, null=True)
-    employer_name = models.CharField(max_length=200, blank=True, null=True)
-    employer_phone = models.CharField(max_length=200, blank=True, null=True)
-    employment_type = models.CharField(max_length=200, blank=True, null=True, choices=EMPLOYMENT_TYPE)
-    job_title = models.CharField(max_length=200, blank=True, null=True)
-    job_start_date = models.DateField(blank=True, null=True)
-    job_end_date = models.DateField(blank=True, null=True)
+    
     annual_income = models.CharField(max_length=300, blank=True, null=True)
-    proof_of_employment = CloudinaryField(resource_type='raw', blank=True, null=True)
-    proof_of_income = CloudinaryField(resource_type='raw', blank=True, null=True)
 
 
     address = models.TextField(blank=True, null=True)  
@@ -122,16 +93,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     gender =  models.CharField(max_length=100, blank=True, null=True, choices=GENDER_CHOICES, default="Male")
 
     dob = models.DateField(blank=True, null=True)
-
-    
-    
-
-    # GOVERNMENT ID 
-    government_id_type = models.CharField(max_length=200, blank=True, null=True, default=PREFERRED_ID_TYPE)
-    government_id_number = models.CharField(max_length=200, blank=True, null=True)
-    front_id_image = CloudinaryField(resource_type='raw', blank=True, null=True)
-    back_id_image = CloudinaryField(resource_type='raw', blank=True, null=True)
-    CloudinaryField(resource_type='raw', blank=True, null=True)
 
 
     citizenship_status = models.CharField(max_length=50, choices=[

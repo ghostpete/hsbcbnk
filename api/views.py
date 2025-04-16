@@ -72,29 +72,8 @@ def register_api_view(request):
         first_name=request.data.get('first_name')
         last_name=request.data.get('last_name')
         email=request.data.get('email')       
-        phone_number=request.data.get('phone_number')
-        # ssn=request.data.get('ssn')       
+        phone_number=request.data.get('phone_number') 
         annual_income=request.data.get('annual_income')
-
-        
-        # employment_type = request.data.get("employment_type")
-        # employer_name = request.data.get("employer_name")
-        # employer_phone = request.data.get("employer_phone")
-        # job_start_date = request.data.get("job_start_date")
-        # job_end_date = request.data.get("job_end_date")
-        # employment_status=request.data.get('employment_status')
-        # job_title=request.data.get('job_title')
-        
-        # proof_of_employment = request.FILES.get("proof_of_employment")
-        # proof_of_income = request.FILES.get("proof_of_income")
-
-        # tax_identity_number = request.FILES.get("tax_identity_number")
-
-        
-
-        
-        
-
 
         country=request.data.get('country')
         state=request.data.get('state')
@@ -102,12 +81,7 @@ def register_api_view(request):
         dob=request.data.get('dob')
         city=request.data.get('city')
         address=request.data.get('address')
-        # government_id_type=request.data.get('government_id_type')
-        # citizenship_status=request.data.get('citizenship_status')
-        # government_id_number=request.data.get('government_id_number')
-        # profile_image=request.FILES.get('profile_image')
-        # front_id_image=request.FILES.get('front_id_image')
-        # back_id_image=request.FILES.get('back_id_image')
+        
         password=request.data.get('password')
         
         password_confirmation=request.data.get('password_confirmation')
@@ -423,9 +397,7 @@ def create_account_view_api(request):
 
     account_type = request.data.get("account_type")
 
-    government_id_type = request.data.get("government_id_type")
-    government_id_number = request.data.get("government_id_number")
-    citizenship_status = request.data.get("citizenship_status")
+    
 
     employment_status = request.data.get("employment_status")
     employment_type = request.data.get("employment_type")
@@ -438,9 +410,6 @@ def create_account_view_api(request):
 
     annual_income = request.data.get("annual_income")
 
-
-    front_id_image = request.FILES.get("front_id_image", None)
-    back_id_image = request.FILES.get("back_id_image", None)
     proof_of_employment = request.FILES.get("proof_of_employment", None)
     proof_of_income = request.FILES.get("proof_of_income", None)
     utility_bill = request.FILES.get("utility_bill", None)
@@ -483,15 +452,6 @@ def create_account_view_api(request):
             utility_bill=utility_bill,
             address=address,
             credit_score=credit_score,
-
-            # government_id_type=government_id_type,
-            # government_id_number=government_id_number,
-            # # Files
-            # front_id_image=front_id_image,
-            # back_id_image=back_id_image,
-
-
-            # citizenship_status=citizenship_status,
 
             # Employment
             employment_status=employment_status,
@@ -664,7 +624,7 @@ def KYCAPIView(request):
     data = request.data
     files = request.FILES
     
-    print(data)
+    # print(data)
 
     marital_choice = data.get('marital_choice')
     number_of_dependents = data.get('number_of_dependents')
