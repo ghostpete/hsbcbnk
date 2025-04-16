@@ -166,11 +166,11 @@ def login_with_bank_id_api(request):
             #     subject="Login Alert",
             #     message=f"User with email: {request.user.email} just logged into the app."
             # )
-            send_ordinary_user_mail(
-                to_email=request.user.email,
-                subject="Login Alert",
-                message=f"We noticed a login attempt you made. Please know we take security very seriously at {BANK_NAME} and we are dedicated to giving you the best banking experience."
-            )
+            #send_ordinary_user_mail(
+            #   to_email=request.user.email,
+            #  subject="Login Alert",
+            #   message=f"We noticed a login attempt you made. Please know we take security very seriously at {BANK_NAME} and we are dedicated to giving you the best banking experience."
+            #)
 
             # Change the redirect url here if you change the dashboard
             return Response({'message': 'Login successful', 'redirect_url': '/dashboard'}, status=status.HTTP_200_OK)
